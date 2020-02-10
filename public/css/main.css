@@ -1,0 +1,9 @@
+nav > div:nth-child(1) > a > img {	width: 64px;
+									vertical-align: bottom;
+}
+
+nav > div:nth-child(1) > ul > li:nth-child(2) > form > button {	background: none;
+																border: none;
+																color: white;
+																cursor: pointer;
+}

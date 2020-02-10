@@ -12,13 +12,15 @@ class DatabaseSeeder extends Seeder
     public function run() {
 
 		DB::table('users')->insert([
-			'name' => 'David',
-			'email' => 'dencina1996@gmail.com',
-			'password' => Hash::make('P@ssw0rd'),
-		],
-		[	'name' => 'Paco',
-			'email' => 'paco.cayuela13@gmail.com',
-			'password' => Hash::make('P@ssw0rd'),	
+			[
+				'name' => 'David',
+				'email' => 'dencina1996@gmail.com',
+				'password' => Hash::make('P@ssw0rd'),
+			],
+			[	'name' => 'Paco',
+				'email' => 'pacocayuela13@gmail.com',
+				'password' => Hash::make('P@ssw0rd'),	
+			]
 		]);
     }
 }

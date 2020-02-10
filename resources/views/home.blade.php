@@ -20,13 +20,13 @@
                     <div class='row'>
                         <h4>Login</h4>
                         <div class='input-field col s12'>
-                            <input class='validate' type='email' name='email' id='email' autofocus>
+                            <input class='validate' type='email' name='email' id='email' autofocus autocomplete="off">
                             <label for='email'>Correo electrónico</label>
                         </div> 
                     </div>
                     <div class='row'>
                         <div class='input-field col s12'>
-                            <input class='validate' type='password' name='password' id='password' />
+                            <input class='validate' type='password' name='password' id='password' autocomplete="off">
                             <label for='password'>Contraseña</label>
                         </div>
                     </div>

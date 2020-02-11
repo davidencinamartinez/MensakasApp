@@ -29,6 +29,19 @@
                 @endauth
             </div>
         </nav>
+        <div class="navbar-fixed">
+          <nav>
+            <div class="nav-wrapper deep-purple accent-2">
+              <ul class="left hide-on-med-and-down">
+                <li><a href="/users">Users</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Menus</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Deliver</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
         @section('extendedSection')
         @show
     </body>

@@ -22,3 +22,5 @@ Route::get('/', function () {
 Route::get('/adminPanel', function () {
     return view('adminPanel');
 });
+
+Route::get('/users', 'AdminPanelController@getUsers');

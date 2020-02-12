@@ -27,3 +27,4 @@ Route::get('users', 'AdminPanelController@getUsers');
 
 Route::get('users/{id}', 'UsersController@getUser');
 
+Route::post('users/update/{id}', 'UsersController@updateUser');

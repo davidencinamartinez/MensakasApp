@@ -8,7 +8,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('select').not('.disabled').formSelect();
-    $('a[href^="users"]').setAttribute('href', '/');
+    $('a[href^="users"]').attr('href', '/users');
 });
 </script>
 @endpush
@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       @foreach($data as $userData)
-      <tr onclick="window.open('/users/{{ $userData->id }}')">
+      <tr onclick="window.open('/users/{{ $userData->id }}')" style="cursor: pointer;">
         <td>{{ $userData->first_name }}</td>
         <td>{{ $userData->last_name }}</td>
         <td>{{ $userData->email }}</td>

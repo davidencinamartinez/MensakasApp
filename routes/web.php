@@ -34,3 +34,5 @@ Route::post('users/delete/{id}', 'UsersController@deleteUser');
 Route::get('new/user', function () {
 	return view('users.user_create');
 });
+
+Route::post('new/user', 'UsersController@createUser');

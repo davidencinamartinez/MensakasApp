@@ -12,10 +12,21 @@
 });
 </script>
 @endpush
+@push('styles')
+<style type="text/css">
+  .container {width:70% !important}
+</style>
+  
+@endpush
 
 @section('extendedSection')
+<div class="container" style="padding-top: 50px">
+  <div class="row">
+    <a href="new/user" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">person_add</i></a>
+    <h4>Usuarios</h4>
+  </div>
+</div>
 <div class="container responsive-table">
-  <h4>Usuarios</h4>
   <table class="highlight">
     <thead>
       <tr>

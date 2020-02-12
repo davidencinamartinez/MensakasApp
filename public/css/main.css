@@ -1,3 +1,6 @@
+* {	font-family: 'Open Sans', sans-serif;
+}
+
 nav > div:nth-child(1) > a > img {	width: 64px;
 									vertical-align: bottom;
 }

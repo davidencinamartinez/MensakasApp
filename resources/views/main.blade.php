@@ -2,11 +2,12 @@
     <head>
         <meta charset='utf-8'>
         <title>@yield('title')</title>
-        <link rel="shortcut icon" type="image/png" href="https://pbs.twimg.com/profile_images/1163360821373804544/iShuLlzx_400x400.jpg">
+        <link rel="shortcut icon" type="image/png" href="/src/favicon.jpg">
         @stack('styles')
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="/css/main.css">
+            <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         @stack('scripts')
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     </head>
@@ -14,7 +15,7 @@
         <nav>
             <div class="nav-wrapper purple darken-3">
                 <a href="/home" class="brand-logo">
-                    <img class="corporativeLogo" src="/storage/Logo.webp">
+                    <img class="corporativeLogo" src="/src/Logo.webp">
                     MensakasApp - Panel de Administración
                 </a>
                 @auth

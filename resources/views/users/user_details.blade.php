@@ -15,21 +15,28 @@
 @foreach ($data as $userData)
 <div class="container" style="padding-top: 50px">
 	<div class="row">
+		<form action="/users/delete/{{ $userData->id }}" method="POST" onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
+			@csrf
+			<button type="submit" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">delete_forever</i></button>
+		</form>
+		<h4>Usuario Nº: {{ $userData->id }}</h4>
+	</div>
+	<div class="row">
 	    <form class="col s12" action="/users/update/{{ $userData->id }}" method="POST" onsubmit="return confirm('Deseas guardar los cambios?');">
 	    	@csrf
 	      <div class="row">
 	        <div class="input-field col s6">
-	          <input value="{{ $userData->first_name }}" name="first_name" type="text" class="validate">
+	          <input value="{{ $userData->first_name }}" name="first_name" type="text" class="validate" autocomplete="off">
 	          <label for="first_name">Nombre</label>
 	        </div>
 	        <div class="input-field col s6">
-	          <input value="{{ $userData->last_name }}" name="last_name" type="text" class="validate">
+	          <input value="{{ $userData->last_name }}" name="last_name" type="text" class="validate" autocomplete="off">
 	          <label for="first_name">Apellido</label>
 	        </div>
 	      </div>
 	      <div class="row">
 	      	<div class="input-field col s12">
-	         <input value="{{ $userData->email }}" name="email" type="text" class="validate">
+	         <input value="{{ $userData->email }}" name="email" type="text" class="validate" autocomplete="off">
 	          <label for="disabled">Correo electrónico</label>
 	        </div>
 	      </div>
@@ -61,7 +68,7 @@
 	         <label>Rol</label>
 	       </div>
 	   </div>
-	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-light purple darken-1'>Guardar cambios<i class="material-icons right">save</i></button>
+	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Guardar cambios</b></button>
 	    </form>
 	  </div>
 	</div>

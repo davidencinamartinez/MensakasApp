@@ -23,8 +23,14 @@ Route::get('/adminPanel', function () {
     return view('adminPanel');
 });
 
-Route::get('users', 'AdminPanelController@getUsers');
+Route::get('users', 'UsersController@getAllUsers')->name('users');
 
 Route::get('users/{id}', 'UsersController@getUser');
 
 Route::post('users/update/{id}', 'UsersController@updateUser');
+
+Route::post('users/delete/{id}', 'UsersController@deleteUser');
+
+Route::get('new/user', function () {
+	return view('users.user_create');
+});

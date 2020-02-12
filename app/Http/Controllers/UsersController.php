@@ -7,6 +7,12 @@ use DB;
 
 class UsersController extends Controller {
 
+	public function getAllUsers() {
+		$data = DB::table('users')->orderBy('role', 'desc')->get();
+        return view('users.users_table', [  'data' => $data
+        ]);
+	}
+
     public function getUser($id) {
     	$data = DB::table('users')->where('id', $id)->get();
     	return view('users.user_details', [  'data' => $data
@@ -22,5 +28,14 @@ class UsersController extends Controller {
     		]
     	);
     	return back();
+    }
+
+    public function deleteUser($id) {
+    	DB::table('users')->where('id', '=', $id)->delete();
+    	return redirect()->route('users');
+    }
+
+    public function createUser() {
+        
     }
 }

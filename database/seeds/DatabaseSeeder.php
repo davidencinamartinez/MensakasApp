@@ -24,7 +24,28 @@ class DatabaseSeeder extends Seeder
 				'email' => 'pacocayuela13@gmail.com',
 				'password' => Hash::make('P@ssw0rd'),	
 				'role' => 4
-			]
+			],
+			[
+				'first_name' => 'Miquel',
+				'last_name' => 'Quintana',
+				'email' => 'mikeblack@gmail.com',
+				'password' => Hash::make('P@ssw0rd'),
+				'role' => 3
+			],
+			[
+				'first_name' => 'Esther',
+				'last_name' => 'Martí',
+				'email' => 'emart92@gmail.com',
+				'password' => Hash::make('P@ssw0rd'),
+				'role' => 1
+			],
+			[
+				'first_name' => 'Pepe',
+				'last_name' => 'Forés',
+				'email' => 'pepe1990@gmail.com',
+				'password' => Hash::make('P@ssw0rd'),
+				'role' => 2
+			],
 		]);
     }
 }

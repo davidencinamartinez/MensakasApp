@@ -8,6 +8,7 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('select').not('.disabled').formSelect();
+    $('a[href^="users"]').setAttribute('href', '/');
 });
 </script>
 @endpush
@@ -44,5 +45,4 @@
     </tbody>
   </table>
 </div>
-
 @endsection

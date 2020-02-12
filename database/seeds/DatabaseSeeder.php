@@ -13,13 +13,17 @@ class DatabaseSeeder extends Seeder
 
 		DB::table('users')->insert([
 			[
-				'name' => 'David',
+				'first_name' => 'David',
+				'last_name' => 'Encina',
 				'email' => 'dencina1996@gmail.com',
 				'password' => Hash::make('P@ssw0rd'),
+				'role' => 4
 			],
-			[	'name' => 'Paco',
+			[	'first_name' => 'Paco',
+				'last_name' => 'Cayuela',
 				'email' => 'pacocayuela13@gmail.com',
 				'password' => Hash::make('P@ssw0rd'),	
+				'role' => 4
 			]
 		]);
     }

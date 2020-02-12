@@ -18,7 +18,7 @@
                 </a>
                 @auth
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li>Bienvenido <b>{{ Auth::user()->name }}</b></li>
+                        <li>Bienvenido <b>{{ Auth::user()->first_name }}</b></li>
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ApplicationTables extends Migration
-{
+class ApplicationTables extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
+
         Schema::create('categories', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
@@ -26,6 +25,7 @@ class ApplicationTables extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('bus_name');
             $table->string('bus_description');
+            $table->string('address');
             $table->integer('postal_code');
         });
 
@@ -53,9 +53,8 @@ class ApplicationTables extends Migration
             $table->engine = 'innodb';
             $table->increments('id');
             $table->timestamp('order_date');
-            $table->string('consumer_id');
-            $table->unsignedinteger('bus_id');
-            $table->foreign('bus_id')->references('id')->on('businesses');
+            $table->integer('consumer_id');
+            $table->integer('bus_id');
             $table->string('items'); // array of items (json)
             $table->string('extras')->nullable(); // array of extras (json)
             $table->boolean('order_status'); // confirmed (true) / not confirmed (false)
@@ -66,10 +65,10 @@ class ApplicationTables extends Migration
         Schema::create('deliveries', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
-            $table->unsignedinteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->string('deliverer_id');
+            $table->integer('order_id'); // references id on orders
+            $table->string('deliverer_id'); // references id on users
         });       
+
     }
 
     /**
@@ -77,8 +76,7 @@ class ApplicationTables extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        //
+    public function down() {
+        Schema::dropIfExists('failed_jobs');
     }
 }

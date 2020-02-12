@@ -36,7 +36,7 @@
             <div class="nav-wrapper purple darken-1">
               <ul class="left hide-on-med-and-down">
                 <li><a href="users">Usuarios</a></li>
-                <li><a href="#">Empresas</a></li>
+                <li><a href="businesses">Empresas</a></li>
                 <li><a href="#">Menús</a></li>
                 <li><a href="#">Pedidos</a></li>
                 <li><a href="#">Entregas</a></li>

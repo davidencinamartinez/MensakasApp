@@ -11,7 +11,11 @@
 |
 */
 
+// AUTHENTICATION ROUTES
+
 Auth::routes();
+
+// HOME ROUTE
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -19,23 +23,38 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/adminPanel', function () {
-    return view('adminPanel');
-});
+// USERS ROUTES
 
-Route::get('users', 'UsersController@getAllUsers')->name('users');
+	// USERS LIST
+		
+		Route::get('users', 'UsersController@getAllUsers')->name('users');
 
-Route::get('users/{id}', 'UsersController@getUser');
+	// USER DETAILS
 
-Route::post('users/update/{id}', 'UsersController@updateUser');
+		Route::get('users/{id}', 'UsersController@getUser');
 
-Route::post('users/delete/{id}', 'UsersController@deleteUser');
+	// USER DATA UPDATE
 
-Route::get('new/user', function () {
-	return view('users.user_create');
-});
+		Route::post('users/update/{id}', 'UsersController@updateUser');
 
-<<<<<<< HEAD
+	// USER DELETE
+
+		Route::post('users/delete/{id}', 'UsersController@deleteUser');
+
+	// USER CREATION
+
+		// USER CREATION VIEW
+
+			Route::get('new/user', function () {
+				return view('users.user_create');
+			});
+
+		// USER CREATION DB
+
+			Route::post('new/user', 'UsersController@createUser');
+
+// BUSINESSES
+
 Route::get('businesses', 'BusinessController@getAllBusinesses')->name('business');
 
 Route::get('businesses/{id}', 'BusinessController@getBusiness');
@@ -43,6 +62,4 @@ Route::get('businesses/{id}', 'BusinessController@getBusiness');
 Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
 
 Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
-=======
-Route::post('new/user', 'UsersController@createUser');
->>>>>>> be51a8d605fd1e8a449d3da96aeb9f5dc26309cd
+

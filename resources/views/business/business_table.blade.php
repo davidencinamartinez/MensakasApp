@@ -22,7 +22,7 @@
 @section('extendedSection')
 <div class="container" style="padding-top: 50px">
   <div class="row">
-    <a href="new/user" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">person_add</i></a>
+    <a href="new/user" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">add_circle</i></a>
     <h4>Usuarios</h4>
   </div>
 </div>
@@ -30,24 +30,19 @@
   <table class="highlight">
     <thead>
       <tr>
-          <th>Nom</th>
-          <th>Categoria</th>
-          <th>Descripció</th>
-          <th>Codi postal</th>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Dirección</th>
+          <th>Código postal</th>
       </tr>
     </thead>
     <tbody>
       @foreach($data as $businessData)
       <tr onclick="window.open('/businesses/{{ $businessData->id }}')" style="cursor: pointer;">
         <td>{{ $businessData->bus_name }}</td>
-        @if ($businessData->category_id == 1)
-          <td>Japones</td>
-        @elseif ($businessData->category_id == 2)
-            <td>Haburgueseria</td>
-        @endif
-        <td>{{ $businessData->bus_description }}</td>
+        <td>{{ $businessData->bus_category }}</td>
+        <td>{{ $businessData->address }}</td>
         <td>{{ $businessData->postal_code }}</td>
-
       </tr>
       @endforeach
     </tbody>

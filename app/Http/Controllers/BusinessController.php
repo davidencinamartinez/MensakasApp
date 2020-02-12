@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 
-class BusinessController extends Controller
-{
+class BusinessController extends Controller {
+
   public function getAllBusinesses() {
-    $data = DB::table('businesses')->get();
-        return view('business.business_table', [  'data' => $data
-        ]);
+    $data = DB::table('businesses')
+    ->join('categories','categories.id','=','businesses.category_id')
+    ->select('businesses.id', 'businesses.bus_name', 'categories.name as bus_category', 'businesses.address','businesses.postal_code')
+    ->orderBy('bus_name','asc')
+    ->get();
+    return view('business.business_table', [  'data' => $data
+    ]);
   }
 
     public function getBusiness($id) {

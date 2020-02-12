@@ -16,7 +16,7 @@
 <style type="text/css">
   .container {width:70% !important}
 </style>
-  
+
 @endpush
 
 @section('extendedSection')
@@ -30,27 +30,24 @@
   <table class="highlight">
     <thead>
       <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>E-Mail</th>
-          <th>Rol</th>
+          <th>Nom</th>
+          <th>Categoria</th>
+          <th>Descripció</th>
+          <th>Codi postal</th>
       </tr>
     </thead>
     <tbody>
-      @foreach($data as $userData)
-      <tr onclick="window.open('/users/{{ $userData->id }}')" style="cursor: pointer;">
-        <td>{{ $userData->first_name }}</td>
-        <td>{{ $userData->last_name }}</td>
-        <td>{{ $userData->email }}</td>
-        @if ($userData->role == 4)
-          <td>Administrador</td>
-        @elseif ($userData->role == 3)
-          <td>Negocio</td>
-        @elseif ($userData->role == 2)
-          <td>Repartidor</td>
-        @else
-          <td>Cliente</td>
+      @foreach($data as $businessData)
+      <tr onclick="window.open('/businesses/{{ $businessData->id }}')" style="cursor: pointer;">
+        <td>{{ $businessData->bus_name }}</td>
+        @if ($businessData->category_id == 1)
+          <td>Japones</td>
+        @elseif ($businessData->category_id == 2)
+            <td>Haburgueseria</td>
         @endif
+        <td>{{ $businessData->bus_description }}</td>
+        <td>{{ $businessData->postal_code }}</td>
+
       </tr>
       @endforeach
     </tbody>

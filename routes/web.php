@@ -34,3 +34,11 @@ Route::post('users/delete/{id}', 'UsersController@deleteUser');
 Route::get('new/user', function () {
 	return view('users.user_create');
 });
+
+Route::get('businesses', 'BusinessController@getAllBusinesses')->name('business');
+
+Route::get('businesses/{id}', 'BusinessController@getBusiness');
+
+Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
+
+Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');

@@ -45,5 +45,6 @@ class UsersController extends Controller {
                 'password' => Hash::make($request->input('password')),
             ]
         );
+        return redirect()->route('users');
     }
 }

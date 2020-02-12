@@ -31,7 +31,7 @@
                 @endauth
             </div>
         </nav>
-        <div class="navbar-fixed">
+        <div class="navbar-wrapper">
           <nav>
             <div class="nav-wrapper purple darken-1">
               <ul class="left hide-on-med-and-down">

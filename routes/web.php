@@ -35,6 +35,7 @@ Route::get('new/user', function () {
 	return view('users.user_create');
 });
 
+<<<<<<< HEAD
 Route::get('businesses', 'BusinessController@getAllBusinesses')->name('business');
 
 Route::get('businesses/{id}', 'BusinessController@getBusiness');
@@ -42,3 +43,6 @@ Route::get('businesses/{id}', 'BusinessController@getBusiness');
 Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
 
 Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
+=======
+Route::post('new/user', 'UsersController@createUser');
+>>>>>>> be51a8d605fd1e8a449d3da96aeb9f5dc26309cd

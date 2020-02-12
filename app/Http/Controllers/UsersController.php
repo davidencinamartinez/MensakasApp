@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Hash;
 
 class UsersController extends Controller {
 
@@ -35,7 +36,15 @@ class UsersController extends Controller {
     	return redirect()->route('users');
     }
 
-    public function createUser() {
-        
+    public function createUser(Request $request) {
+        DB::table('users')->insert(
+            [   'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'email' => $request->input('email'),
+                'role' => $request->input('role'),
+                'password' => Hash::make($request->input('password')),
+            ]
+        );
+        return redirect()->route('users');
     }
 }

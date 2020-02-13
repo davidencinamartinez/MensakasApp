@@ -22,8 +22,8 @@
 @section('extendedSection')
 <div class="container" style="padding-top: 50px">
   <div class="row">
-    <a href="new/user" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">add_circle</i></a>
-    <h4>Usuarios</h4>
+    <a href="new/business" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">add_circle</i></a>
+    <h4>Negocios</h4>
   </div>
 </div>
 <div class="container responsive-table">

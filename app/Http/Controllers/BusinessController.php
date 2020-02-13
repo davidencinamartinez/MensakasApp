@@ -38,8 +38,16 @@ class BusinessController extends Controller {
       DB::table('businesses')->where('id', '=', $id)->delete();
       return redirect()->route('businesses');
     }
-    //
-    // public function createUser() {
-    //
-    // }
+
+    public function createBusiness(Request $request) {
+        DB::table('businesses')->insert(
+            [   'category_id' => $request->input('category_id'),
+                'bus_name' => $request->input('bus_name'),
+                'bus_description' => $request->input('bus_description'),
+                'address' => $request->input('address'),
+                'postal_code' => $request->input('postal_code'),
+            ]
+        );
+        return redirect()->route('businesses');
+    }
 }

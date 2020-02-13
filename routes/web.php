@@ -26,7 +26,7 @@ Route::get('/', function () {
 // USERS ROUTES
 
 	// USERS LIST
-		
+
 		Route::get('users', 'UsersController@getAllUsers')->name('users');
 
 	// USER DETAILS
@@ -63,3 +63,14 @@ Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
 
 Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
 
+// BUSINESS CREATION
+
+  // BUSINESS CREATION VIEW
+
+    Route::get('new/business', function () {
+      return view('business.business_create');
+    });
+
+  // BUSINESS CREATION DB
+
+    Route::post('new/business', 'BusinessController@createBusiness');

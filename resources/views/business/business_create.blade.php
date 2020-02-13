@@ -9,6 +9,7 @@
 		$(document).ready(function(){
 		    $('select').formSelect();
 		    $('a[href^="users"]').attr('href', '/users');
+		    $('textarea#bus_description').characterCounter();
 		  });
 	</script>
 @endpush
@@ -32,7 +33,7 @@
 	      </div>
 	      <div class="row">
 	      	<div class="input-field col s12">
-	         <input id="bus_description" name="bus_description" type="text" class="validate" autocomplete="off">
+	         <textarea id="bus_description" name="bus_description" class="materialize-textarea" data-length="120"></textarea>
 	         <label for="bus_description">Descripción</label>
 	        </div>
 	      </div>
@@ -42,17 +43,14 @@
 	         <label for="address">Dirección</label>
 	        </div>
 	      </div>
-	      </div>
 	     <div class="row">
 	     <div class="input-field col s6">
 	         <select name="category_id">
-             <option value="5" selected>Healthy</option>
-	           <option value="4" selected>Kebab</option>
-	           <option value="3">Italiano</option>
-	           <option value="2">Sushi</option>
-	           <option value="1">Fast Food</option>
+             @foreach ($categories as $cat)
+  	           <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+  	         @endforeach
 	         </select>
-	         <label>category_id</label>
+	         <label>Categoría</label>
 	       </div>
 	   </div>
 	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Registrar negocio</b></button>

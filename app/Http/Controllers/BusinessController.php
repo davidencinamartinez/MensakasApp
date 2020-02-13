@@ -19,7 +19,9 @@ class BusinessController extends Controller {
 
     public function getBusiness($id) {
       $data = DB::table('businesses')->where('id', $id)->get();
-      return view('business.business_details', [  'data' => $data
+      $cat = DB::table('categories')->get();
+      return view('business.business_details', [  'data' => $data, 
+                                                  'categories' => $cat
         ]);
     }
 

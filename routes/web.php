@@ -55,7 +55,7 @@ Route::get('/', function () {
 
 // BUSINESSES
 
-Route::get('businesses', 'BusinessController@getAllBusinesses')->name('business');
+Route::get('businesses', 'BusinessController@getAllBusinesses')->name('businesses');
 
 Route::get('businesses/{id}', 'BusinessController@getBusiness');
 
@@ -65,12 +65,14 @@ Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
 
 // BUSINESS CREATION
 
-  // BUSINESS CREATION VIEW
+	// BUSINESS CREATION VIEW
 
-    Route::get('new/business', function () {
-      return view('business.business_create');
-    });
+		Route::get('new/business', function () {
+			$cat = DB::table('categories')->get();
+			return view('business.business_create', [	'categories' => $cat
+			]);
+		});
 
-  // BUSINESS CREATION DB
+	// BUSINESS CREATION DB
 
-    Route::post('new/business', 'BusinessController@createBusiness');
+		Route::post('new/business', 'BusinessController@createBusiness');

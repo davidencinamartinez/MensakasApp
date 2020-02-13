@@ -8,6 +8,7 @@
 		$(document).ready(function(){
 		    $('select').formSelect();
 		    $('a[href^="users"]').attr('href', '/users');
+		    $('textarea#bus_description').characterCounter();
 		  });
 	</script>
 @endpush
@@ -31,27 +32,23 @@
 	        </div>
 	        <div class="input-field col s6">
 	          <input value="{{ $businessData->postal_code }}" name="postal_code" type="text" class="validate" autocomplete="off">
-	          <label for="postal_code">Codigo Postal</label>
+	          <label for="postal_code">Código Postal</label>
 	        </div>
 	      </div>
 	      <div class="row">
 	      	<div class="input-field col s12">
-	         <input value="{{ $businessData->bus_description }}" name="bus_description" type="text" class="validate" autocomplete="off">
+	         <textarea id="bus_description" name="bus_description" class="materialize-textarea" data-length="250">{{ $businessData->bus_description }}</textarea>
 	          <label for="disabled">Descripción</label>
 	        </div>
 	      </div>
 	      <div class="row">
 	     <div class="input-field col s6">
 	         <select name="category_id">
-  	         @if ($businessData->category_id == 2)
-  	           <option value="2" selected>Hamburgueseria</option>
-  	           <option value="1">Japones</option>
-  	         @elseif ($businessData->category_id == 1)
-  	           <option value="2" selected>Japones</option>
-  	           <option value="1">Hamburgueseria</option>
-  	          @endif
+	         	@foreach ($categories as $cat)
+  	           		<option value="{{ $cat->id }}">{{ $cat->name }}</option>
+  	           	@endforeach
 	         </select>
-	         <label>Categoria</label>
+	         <label>Categoría</label>
 	       </div>
 	   </div>
 	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Guardar cambios</b></button>

@@ -57,7 +57,7 @@ class ApplicationTables extends Migration {
             $table->integer('bus_id');
             $table->string('items'); // array of items (json)
             $table->string('extras')->nullable(); // array of extras (json)
-            $table->boolean('order_status'); // confirmed (true) / not confirmed (false)
+            $table->boolean('order_status')->default(2); // confirmed (1) / not confirmed (2)
             $table->timestamp('confirmation_time')->nullable();
             $table->string('comments')->nullable();
         });
@@ -67,6 +67,8 @@ class ApplicationTables extends Migration {
             $table->increments('id');
             $table->integer('order_id'); // references id on orders
             $table->string('deliverer_id'); // references id on users
+            $table->string('deliverer_received')->default(2); // received (1) / not received (2)
+            $table->boolean('delivery_delivered')->default(2); // delivered (1) / not delivered (2)
         });       
 
     }

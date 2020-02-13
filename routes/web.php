@@ -53,26 +53,44 @@ Route::get('/', function () {
 
 			Route::post('new/user', 'UsersController@createUser');
 
-// BUSINESSES
+// BUSINESSES ROUTES
 
-Route::get('businesses', 'BusinessController@getAllBusinesses')->name('businesses');
+	// BUSINESSES LIST
 
-Route::get('businesses/{id}', 'BusinessController@getBusiness');
+		Route::get('businesses', 'BusinessController@getAllBusinesses')->name('businesses');
 
-Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
+	// BUSINESS DETAILS
 
-Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
+		Route::get('businesses/{id}', 'BusinessController@getBusiness');
 
-// BUSINESS CREATION
+	// BUSINESS UPDATE 
 
-	// BUSINESS CREATION VIEW
+		Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
 
-		Route::get('new/business', function () {
-			$cat = DB::table('categories')->get();
-			return view('business.business_create', [	'categories' => $cat
-			]);
-		});
+	// BUSINESS DELETE
 
-	// BUSINESS CREATION DB
+		Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
 
-		Route::post('new/business', 'BusinessController@createBusiness');
+	// BUSINESS CREATION
+
+		// BUSINESS CREATION VIEW
+
+			Route::get('new/business', function () {
+				$cat = DB::table('categories')->get();
+				return view('business.business_create', [	'categories' => $cat
+				]);
+			});
+
+		// BUSINESS CREATION DB
+
+			Route::post('new/business', 'BusinessController@createBusiness');
+
+// ORDERS ROUTES
+
+	// ORDERS LIST
+
+		Route::get('orders', 'OrdersController@getAllOrders')->name('orders');
+
+	// ORDER DETAILS
+
+		Route::get('orders/{id}', 'OrdersController@getOrder');

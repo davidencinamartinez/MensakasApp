@@ -1,20 +1,11 @@
 @extends('main')
 
-@push('scripts')
-<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('select').not('.disabled').formSelect();
-    $('a[href^="users"]').attr('href', '/users');
-});
-</script>
-@endpush
+@section('title', 'Usuarios - MensakasApp')
+
 @push('styles')
 <style type="text/css">
-  .container {width:70% !important}
+  .container {  width:70% !important
+  }
 </style>
   
 @endpush

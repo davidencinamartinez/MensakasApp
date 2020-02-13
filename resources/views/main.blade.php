@@ -9,7 +9,20 @@
             <link rel="stylesheet" type="text/css" href="/css/main.css">
             <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         @stack('scripts')
+            <script
+              src="https://code.jquery.com/jquery-3.4.1.min.js"
+              integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+              crossorigin="anonymous"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            <script type="text/javascript" src="/js/main.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $('select').formSelect();
+                    $('textarea#bus_description').characterCounter();
+                    $('select').not('.disabled').formSelect();
+                    $('.collapsible').collapsible();
+                });
+            </script>
     </head>
     <body>
         <nav>
@@ -35,10 +48,10 @@
           <nav>
             <div class="nav-wrapper purple darken-1">
               <ul class="left hide-on-med-and-down">
-                <li><a href="users">Usuarios</a></li>
-                <li><a href="businesses">Negocios</a></li>
+                <li><a href="/users">Usuarios</a></li>
+                <li><a href="/businesses">Negocios</a></li>
                 <li><a href="#">Menús</a></li>
-                <li><a href="#">Pedidos</a></li>
+                <li><a href="/orders">Pedidos</a></li>
                 <li><a href="#">Entregas</a></li>
               </ul>
             </div>

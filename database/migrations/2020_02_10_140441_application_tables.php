@@ -36,7 +36,7 @@ class ApplicationTables extends Migration {
             $table->foreign('bus_id')->references('id')->on('businesses');
             $table->string('item_name');
             $table->string('item_description')->nullable();
-            $table->float('item_price', 5, 2);
+            $table->decimal('item_price', 5, 2);
             $table->boolean('item_status'); // enabled (1) / disabled (2)
         });
 
@@ -46,7 +46,7 @@ class ApplicationTables extends Migration {
             $table->unsignedinteger('item_id');
             $table->foreign('item_id')->references('id')->on('items');
             $table->string('extra_name');
-            $table->float('extra_price', 5, 2);
+            $table->decimal('extra_price', 5, 2);
         });
 
         Schema::create('orders', function (Blueprint $table) {
@@ -55,11 +55,24 @@ class ApplicationTables extends Migration {
             $table->timestamp('order_date');
             $table->integer('consumer_id');
             $table->integer('bus_id');
-            $table->string('items'); // array of items (json)
-            $table->string('extras')->nullable(); // array of extras (json)
+            $table->decimal('order_total', 6, 2);
             $table->boolean('order_status')->default(2); // confirmed (1) / not confirmed (2)
             $table->timestamp('confirmation_time')->nullable();
             $table->string('comments')->nullable();
+        });
+
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->engine = 'innodb';
+            $table->increments('id');
+            $table->integer('order_id');
+            $table->integer('item_id');
+        });
+
+        Schema::create('order_extras', function (Blueprint $table) {
+            $table->engine = 'innodb';
+            $table->increments('id');
+            $table->integer('order_id');
+            $table->integer('extra_id');
         });
 
         Schema::create('deliveries', function (Blueprint $table) {
@@ -80,5 +93,11 @@ class ApplicationTables extends Migration {
      */
     public function down() {
         Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('categories');
+        Schema::dropIfExists('businesses');
+        Schema::dropIfExists('items');
+        Schema::dropIfExists('extras');
+        Schema::dropIfExists('orders');
+        Schema::dropIfExists('deliveries');
     }
 }

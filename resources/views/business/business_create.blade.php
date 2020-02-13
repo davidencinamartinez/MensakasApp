@@ -1,18 +1,7 @@
 @extends('main')
 
-@push('scripts')
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		    $('select').formSelect();
-		    $('a[href^="users"]').attr('href', '/users');
-		    $('textarea#bus_description').characterCounter();
-		  });
-	</script>
-@endpush
+@section('title', 'Registro de negocio - MensakasApp')
+
 @section('extendedSection')
 <div class="container" style="padding-top: 50px">
 	<div class="row">

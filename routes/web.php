@@ -15,10 +15,6 @@
 
 Auth::routes();
 
-// HOME ROUTE
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -27,70 +23,72 @@ Route::get('/', function () {
 
 	// USERS LIST
 
-		Route::get('users', 'UsersController@getAllUsers')->name('users');
+		Route::get('admin/users', 'UsersController@getAllUsers')->name('users');
 
 	// USER DETAILS
 
-		Route::get('users/{id}', 'UsersController@getUser');
+		Route::get('admin/users/{id}', 'UsersController@getUser');
 
 	// USER DATA UPDATE
 
-		Route::post('users/update/{id}', 'UsersController@updateUser');
+		Route::post('admin/users/update/{id}', 'UsersController@updateUser');
 
 	// USER DELETE
 
-		Route::post('users/delete/{id}', 'UsersController@deleteUser');
+		Route::post('admin/users/delete/{id}', 'UsersController@deleteUser');
 
 	// USER CREATION
 
 		// USER CREATION VIEW
 
-			Route::get('new/user', function () {
+			Route::get('admin/new/user', function () {
 				return view('users.user_create');
 			});
 
 		// USER CREATION DB
 
-			Route::post('new/user', 'UsersController@createUser');
+			Route::post('admin/new/user', 'UsersController@createUser');
 
 // BUSINESSES ROUTES
 
 	// BUSINESSES LIST
 
-		Route::get('businesses', 'BusinessController@getAllBusinesses')->name('businesses');
+		Route::get('admin/businesses', 'BusinessController@getAllBusinesses')->name('businesses');
 
 	// BUSINESS DETAILS
 
-		Route::get('businesses/{id}', 'BusinessController@getBusiness');
+		Route::get('admin/businesses/{id}', 'BusinessController@getBusiness');
 
 	// BUSINESS UPDATE 
 
-		Route::post('businesses/update/{id}', 'BusinessController@updateBusiness');
+		Route::post('admin/businesses/update/{id}', 'BusinessController@updateBusiness');
 
 	// BUSINESS DELETE
 
-		Route::post('businesses/delete/{id}', 'BusinessController@deleteBusiness');
+		Route::post('admin/businesses/delete/{id}', 'BusinessController@deleteBusiness');
 
 	// BUSINESS CREATION
 
 		// BUSINESS CREATION VIEW
 
-			Route::get('new/business', function () {
+			Route::get('admin/new/business', function () {
 				$cat = DB::table('categories')->get();
-				return view('business.business_create', [	'categories' => $cat
+				$locations = DB::table('locations')->get();
+				return view('business.business_create', [	'categories' => $cat,
+															'locations' => $locations
 				]);
 			});
 
 		// BUSINESS CREATION DB
 
-			Route::post('new/business', 'BusinessController@createBusiness');
+			Route::post('admin/new/business', 'BusinessController@createBusiness');
 
 // ORDERS ROUTES
 
 	// ORDERS LIST
 
-		Route::get('orders', 'OrdersController@getAllOrders')->name('orders');
+		Route::get('admin/orders', 'OrdersController@getAllOrders')->name('orders');
 
 	// ORDER DETAILS
 
-		Route::get('orders/{id}', 'OrdersController@getOrder');
+		Route::get('admin/orders/{id}', 'OrdersController@getOrder');

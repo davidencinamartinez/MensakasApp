@@ -50,3 +50,34 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {	-webkit-app
 
 input[type=number] {	-moz-appearance:textfield;
 }
+
+.timepicker-container {	border: solid 1px black;
+}
+
+.timepicker-digital-display {	background-color: #471255;
+}
+
+.timepicker-span-hours {	color: white !important;
+}
+
+.timepicker-span-minutes {	color: white !important;
+}
+
+.timepicker-svg > g > line, circle {	stroke: white !important;
+										fill: #8e24aa !important;
+}
+
+.timepicker-plate {	background-color: #471255 !important;
+					border: solid 1px black !important;
+}
+
+.timepicker-tick {	color: white !important;
+}
+
+.timepicker-tick:hover {	background-color: rgba(255,255,255,0.6) !important;
+							color: black !important;
+							border: solid 1px white !important;
+}
+
+.timepicker-close {	color: black !important;
+}

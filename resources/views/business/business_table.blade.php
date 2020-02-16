@@ -55,13 +55,13 @@
         <th>Categoría</th>
         <th>Población</th>
         <th>Dirección</th>
-        <th>Código postal</th>
+        <th>CP</th>
       </tr>
     </thead>
     <tbody>
       @foreach($data as $businessData)
       <tr>
-        <form id="delForm" action="/businesses/delete/{{ $businessData->id }}" 
+        <form id="delForm" action="/admin/businesses/delete/{{ $businessData->id }}" 
           method="POST" style="display:none;" 
           onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
           @csrf
@@ -69,7 +69,7 @@
         <td>
           <ul id="dropdown2" class="dropdown-content hover">
             <li>
-              <a href="/businesses/{{ $businessData->id }}">
+              <a href="/admin/businesses/{{ $businessData->id }}">
                 Editar registro
                 <i class="material-icons">edit</i>
               </a>

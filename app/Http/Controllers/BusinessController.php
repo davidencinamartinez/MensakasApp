@@ -21,7 +21,7 @@ class BusinessController extends Controller {
     public function getBusiness($id) {
       $data = DB::table('businesses')
       ->join('locations', 'locations.id', '=', 'businesses.location_id')
-      ->select( 'businesses.id','businesses.bus_name', 'businesses.bus_description', 'businesses.location_id', 'businesses.address', 'businesses.category_id', 'locations.id as location_identifier', 'locations.name')
+      ->select( 'businesses.id','businesses.bus_name', 'businesses.bus_description', 'businesses.location_id', 'businesses.address', 'businesses.category_id', 'locations.id as location_identifier', 'locations.name', 'businesses.opening_schedule', 'businesses.closing_schedule')
       ->where('businesses.id', $id)
       ->get();
       $cat = DB::table('categories')->get();
@@ -38,7 +38,9 @@ class BusinessController extends Controller {
           'location_id' => $request->input('location_id'),
         	'bus_name' => $request->input('bus_name'),
           'bus_description' => $request->input('bus_description'),
-          'address' => $request->input('bus_address')
+          'address' => $request->input('bus_address'),
+          'opening_schedule' => $request->input('opening_schedule'),
+          'closing_schedule' => $request->input('closing_schedule')
         ]
       );
       return redirect()->route('businesses');
@@ -51,12 +53,14 @@ class BusinessController extends Controller {
 
     public function createBusiness(Request $request) {
         DB::table('businesses')->insert(
-            [   'category_id' => $request->input('category_id'),
-                'bus_name' => $request->input('bus_name'),
-                'bus_description' => $request->input('bus_description'),
-                'address' => $request->input('address'),
-                'postal_code' => $request->input('postal_code'),
-            ]
+          [ 'category_id' => $request->input('category_id'),
+            'location_id' => $request->input('location_id'),
+            'bus_name' => $request->input('bus_name'),
+            'bus_description' => $request->input('bus_description'),
+            'address' => $request->input('bus_address'),
+            'opening_schedule' => $request->input('opening_schedule'),
+            'closing_schedule' => $request->input('closing_schedule')
+          ]
         );
         return redirect()->route('businesses');
     }

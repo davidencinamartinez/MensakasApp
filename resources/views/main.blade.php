@@ -21,8 +21,14 @@
                     $('textarea#bus_description').characterCounter();
                     $('select').not('.disabled').formSelect();
                     $('.collapsible').collapsible();
-                     $(".dropdown-trigger").dropdown({
+                    $(".dropdown-trigger").dropdown({
                         constrainWidth: false
+                    });
+                    $('.timepicker').timepicker({
+                        i18n: { cancel: 'Cancelar',
+                                done: 'Establecer'
+                        },
+                        twelveHour : false,
                     });
                 });
             </script>
@@ -30,7 +36,7 @@
     <body>
         <nav>
             <div class="nav-wrapper purple darken-3">
-                <a href="/home" class="brand-logo">
+                <a href="/" class="brand-logo">
                     <img class="corporativeLogo" src="/src/Logo.webp">
                     MensakasApp - Panel de Administración
                 </a>
@@ -51,10 +57,10 @@
           <nav>
             <div class="nav-wrapper purple darken-1">
               <ul class="left hide-on-med-and-down">
-                <li><a href="/users">Usuarios</a></li>
-                <li><a href="/businesses">Negocios</a></li>
+                <li><a href="/admin/users">Usuarios</a></li>
+                <li><a href="/admin/businesses">Negocios</a></li>
                 <li><a href="#">Menús</a></li>
-                <li><a href="/orders">Pedidos</a></li>
+                <li><a href="/admin/orders">Pedidos</a></li>
                 <li><a href="#">Entregas</a></li>
               </ul>
             </div>

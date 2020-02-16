@@ -60,7 +60,7 @@
     <tbody>
       @foreach($data as $userData)
       <tr>
-        <form id="delForm" action="/users/delete/{{ $userData->id }}" 
+        <form id="delForm" action="/admin/users/delete/{{ $userData->id }}" 
           method="POST" style="display:none;" 
           onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
           @csrf
@@ -68,9 +68,9 @@
         <td>
           <ul id="dropdown2" class="dropdown-content hover">
             <li>
-              <a href="/users/{{ $userData->id }}">
-                Editar registro
-                <i class="material-icons">edit</i>
+              <a href="/admin/users/{{ $userData->id }}">
+                Ver detalles
+                <i class="material-icons">remove_red_eye</i>
               </a>
             </li>
             <li>

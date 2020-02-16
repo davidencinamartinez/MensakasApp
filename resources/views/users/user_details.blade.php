@@ -3,17 +3,35 @@
 @section('title', 'Detalles de usuario - MensakasApp')
 
 @section('extendedSection')
+
+@push('scripts')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('input').on('input', function(event) {
+				$('button[type="submit"]').removeClass('disabled');
+			});
+			$('select').change(function(event) {
+				$('button[type="submit"]').removeClass('disabled');
+			});
+		});
+	</script>
+@endpush
+
 @foreach ($data as $userData)
 <div class="container" style="padding-top: 50px">
 	<div class="row">
-		<form action="/users/delete/{{ $userData->id }}" method="POST" onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
+		<form action="/admin/users/delete/{{ $userData->id }}" method="POST" onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
 			@csrf
 			<button type="submit" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">delete_forever</i></button>
 		</form>
 		<h4>Usuario Nº: {{ $userData->id }}</h4>
 	</div>
 	<div class="row">
-	    <form class="col s12" action="/users/update/{{ $userData->id }}" method="POST" onsubmit="return confirm('Deseas guardar los cambios?');">
+	    <form class="col s12" action="/admin/users/update/{{ $userData->id }}" method="POST" onsubmit="return confirm('Deseas guardar los cambios?');">
 	    	@csrf
 	      <div class="row">
 	        <div class="input-field col s6">
@@ -59,7 +77,7 @@
 	         <label>Rol</label>
 	       </div>
 	   </div>
-	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Guardar cambios</b></button>
+	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1 disabled'><b>Guardar cambios</b></button>
 	    </form>
 	  </div>
 	</div>

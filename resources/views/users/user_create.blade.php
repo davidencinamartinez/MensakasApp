@@ -8,7 +8,7 @@
 		<h4>Registro de usuario</h4>
 	</div>
 	<div class="row">
-	    <form class="col s12" action="/new/user" method="POST" onsubmit="return confirm('Estás seguro de registrar a este usuario?');">
+	    <form class="col s12" action="/admin/new/user" method="POST" onsubmit="return confirm('Estás seguro de registrar a este usuario?');">
 	    	@csrf
 	      <div class="row">
 	        <div class="input-field col s6">

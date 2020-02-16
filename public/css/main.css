@@ -31,3 +31,22 @@ span {	color: black !important;
 .row .input-field textarea:focus {	border-bottom: 1px solid #6200EA !important;
 									box-shadow: 0 1px 0 0 #6200EA !important
 }
+
+a.dropdown-trigger {	background-color: #8e24aa !important
+}
+
+a.dropdown-trigger:hover {	background-color: #6a1b9a !important
+}
+
+.dropdown-content li > a {	color: black;
+}
+
+.btn-floating:hover {	background-color: #6a1b9a !important
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {	-webkit-appearance: none;
+  																		margin: 0;
+}
+
+input[type=number] {	-moz-appearance:textfield;
+}

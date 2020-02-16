@@ -17,7 +17,7 @@
         	</div>
         	<div class="input-field col s6">
 	          <input id="postal_code" name="postal_code" type="text" class="validate" autocomplete="off">
-	          <label for="postal_code">Codigo postal</label>
+	          <label for="postal_code">Código postal</label>
         	</div>
 	      </div>
 	      <div class="row">

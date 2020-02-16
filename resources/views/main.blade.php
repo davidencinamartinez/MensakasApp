@@ -21,6 +21,9 @@
                     $('textarea#bus_description').characterCounter();
                     $('select').not('.disabled').formSelect();
                     $('.collapsible').collapsible();
+                     $(".dropdown-trigger").dropdown({
+                        constrainWidth: false
+                    });
                 });
             </script>
     </head>

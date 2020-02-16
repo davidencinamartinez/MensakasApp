@@ -18,22 +18,31 @@ class ApplicationTables extends Migration {
             $table->string('name');
         });
 
+        Schema::create('locations', function (Blueprint $table) {
+            $table->engine = 'innodb';
+            $table->increments('id');
+            $table->string('name');
+            $table->integer('postal_code');
+        });
+
         Schema::create('businesses', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
             $table->unsignedinteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
+            $table->unsignedinteger('location_id');
+            $table->foreign('location_id')->references('id')->on('locations');
             $table->string('bus_name');
             $table->string('bus_description');
-            $table->string('address');
-            $table->integer('postal_code');
+            $table->string('address')->nullable();
+            $table->time('opening_schedule')->nullable();
+            $table->time('closing_schedule')->nullable();
         });
 
         Schema::create('items', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
-            $table->unsignedinteger('bus_id');
-            $table->foreign('bus_id')->references('id')->on('businesses');
+            $table->integer('bus_id');
             $table->string('item_name');
             $table->string('item_description')->nullable();
             $table->decimal('item_price', 5, 2);
@@ -43,8 +52,7 @@ class ApplicationTables extends Migration {
         Schema::create('extras', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
-            $table->unsignedinteger('item_id');
-            $table->foreign('item_id')->references('id')->on('items');
+            $table->integer('item_id');
             $table->string('extra_name');
             $table->decimal('extra_price', 5, 2);
         });
@@ -56,8 +64,9 @@ class ApplicationTables extends Migration {
             $table->integer('consumer_id');
             $table->integer('bus_id');
             $table->decimal('order_total', 6, 2);
-            $table->boolean('order_status')->default(2); // confirmed (1) / not confirmed (2)
+            $table->boolean('order_status')->default(2); // confirmed (1) / not confirmed (2) / processing (3) / ready (4) / delivered (5)
             $table->timestamp('confirmation_time')->nullable();
+            $table->timestamp('estimated_time')->nullable(); // estimation (minutes) for business to process order
             $table->string('comments')->nullable();
         });
 
@@ -94,10 +103,13 @@ class ApplicationTables extends Migration {
     public function down() {
         Schema::dropIfExists('failed_jobs');
         Schema::dropIfExists('categories');
+        Schema::dropIfExists('locations');
         Schema::dropIfExists('businesses');
         Schema::dropIfExists('items');
         Schema::dropIfExists('extras');
         Schema::dropIfExists('orders');
+        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('order_extras');
         Schema::dropIfExists('deliveries');
     }
 }

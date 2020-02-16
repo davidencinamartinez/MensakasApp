@@ -28,7 +28,7 @@ class UsersController extends Controller {
     			'role' => $request->input('role'),
     		]
     	);
-    	return back();
+    	return redirect()->route('users');
     }
 
     public function deleteUser($id) {

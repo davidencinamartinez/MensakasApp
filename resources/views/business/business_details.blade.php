@@ -2,6 +2,26 @@
 
 @section('title', 'Detalles de negocio - MensakasApp')
 
+@push('scripts')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('input').on('input', function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+		$('input').on('change', function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+		$('select').change(function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+	});
+</script>
+@endpush
+
 @section('extendedSection')
 	@foreach ($data as $businessData)
 		<div class="container" style="padding-top: 50px">
@@ -67,7 +87,7 @@
 			       	  <input id="timepicker_closing" name="closing_schedule" class="timepicker" type="time" value="{{ $businessData->closing_schedule }}">
 			       </div>
 			   </div>
-			   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Guardar cambios</b></button>
+			   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1 disabled'><b>Guardar cambios</b></button>
 			    </form>
 			  </div>
 			</div>

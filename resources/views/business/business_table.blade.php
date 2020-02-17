@@ -70,8 +70,8 @@
           <ul id="dropdown2" class="dropdown-content hover">
             <li>
               <a href="/admin/businesses/{{ $businessData->id }}">
-                Editar registro
-                <i class="material-icons">edit</i>
+                Ver detalles
+                <i class="material-icons">remove_red_eye</i>
               </a>
             </li>
             <li>

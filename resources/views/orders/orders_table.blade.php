@@ -5,8 +5,7 @@
 @push('styles')
 <style type="text/css">
   .container {width:70% !important}
-</style>
-  
+</style>  
 @endpush
 
 @section('extendedSection')
@@ -19,6 +18,7 @@
   <table class="highlight">
     <thead>
       <tr>
+          <th>Opciones</th>
           <th>Referencia</th>
           <th>Fecha</th>
           <th>Total (€)</th>
@@ -27,7 +27,23 @@
     </thead>
     <tbody>
       @foreach($data as $orderData)
-      <tr onclick="window.open('/orders/{{ $orderData->id }}')" style="cursor: pointer;">
+      <tr>
+        <form id="delForm" action="/admin/orders/delete/{{ $orderData->id }}" 
+          method="POST" style="display:none;" 
+          onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
+          @csrf
+        </form>
+        <td>
+          <ul id="dropdown2" class="dropdown-content hover">
+            <li>
+              <a href="/admin/orders/{{ $orderData->id }}">
+                Ver detalles
+                <i class="material-icons">remove_red_eye</i>
+              </a>
+            </li>
+          </ul>
+          <a class="btn dropdown-trigger" data-target="dropdown2"><i class="material-icons">settings</i></a>
+        </td> 
         <td>{{ $orderData->id }}</td>
         <td>{{ date('d/m/Y - H:i', strtotime($orderData->order_date)) }}</td>
         <td>{{ $orderData->order_total }}</td>

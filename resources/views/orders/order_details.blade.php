@@ -43,6 +43,16 @@
           </li>
         </ul>
       </div>
+      <div class="row">
+        <div class="input-field col s12">
+          @if (is_null($orderData->comments))
+          <textarea id="comments" name="comments" class="materialize-textarea" disabled>No hay comentarios en este pedido</textarea>
+          @else
+          <textarea id="comments" name="comments" class="materialize-textarea" disabled>{{ $orderData->comments }}</textarea>
+          @endif
+          <label for="comments">Comentarios</label>
+          </div>
+      </div>
       <h4 class="right">Total: <b>{{ $orderData->order_total }} €</b></h4>
     </div>
   @endforeach

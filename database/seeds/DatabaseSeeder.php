@@ -260,12 +260,14 @@ class DatabaseSeeder extends Seeder {
    			[	'order_date' => Carbon::now()->format('Y-m-d H:i:s'),
    				'consumer_id' => 4,
    				'bus_id' => 1,
-          'order_total' => 15.50
+          'order_total' => 15.50,
+          'comments' => 'Preguntar por Gabriel'
    			],
         [ 'order_date' => Carbon::now()->format('Y-m-d H:i:s'),
           'consumer_id' => 4,
           'bus_id' => 2,
-          'order_total' => 11.50
+          'order_total' => 11.50,
+          'comments' => null
         ],
    		]);
 

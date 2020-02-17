@@ -214,6 +214,12 @@ class DatabaseSeeder extends Seeder {
         		'item_price' => 5.50,
         		'item_status' => 1
         	],
+          [ 'bus_id' => 1,
+            'item_name' => 'Menú Grand Whiskey BBQ',
+            'item_description' => 'La famosa Grand Whiskey BBQ está de vuelta. La combinación de carne a la parrilla, salsa Whiskey BBQ y delicioso queso de cabra la hacen insuperable. Y además, con cebolla crujiente, bacon y tomate recién cortado entre pan de cerveza.',
+            'item_price' => 9.20,
+            'item_status' => 1
+          ],
         ]);
 
       DB::table('extras')->insert([

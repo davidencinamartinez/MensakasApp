@@ -92,3 +92,9 @@ Route::get('/', function () {
 	// ORDER DETAILS
 
 		Route::get('admin/orders/{id}', 'OrdersController@getOrder');
+
+// ITEMS ROUTES
+
+	// ITEMS LIST
+
+		Route::get('admin/items', 'ItemsController@getAllItems');

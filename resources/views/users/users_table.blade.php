@@ -60,8 +60,8 @@
     <tbody>
       @foreach($data as $userData)
       <tr>
-        <form id="delForm" action="/admin/users/delete/{{ $userData->id }}" 
-          method="POST" style="display:none;" 
+        <form id="delForm" action="/admin/users/delete/{{ $userData->id }}"
+          method="POST" style="display:none;"
           onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
           @csrf
         </form>
@@ -81,7 +81,7 @@
             </li>
             </ul>
           <a class="btn dropdown-trigger" data-target="dropdown2"><i class="material-icons">settings</i></a>
-        </td> 
+        </td>
         <td>{{ $userData->first_name }}</td>
         <td>{{ $userData->last_name }}</td>
         <td>{{ $userData->email }}</td>

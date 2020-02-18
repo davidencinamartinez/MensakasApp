@@ -20,6 +20,26 @@
 	</script>
 @endpush
 
+@push('scripts')
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('input').on('input', function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+		$('input').on('change', function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+		$('select').change(function(event) {
+			$('button[type="submit"]').removeClass('disabled');
+		});
+	});
+</script>
+@endpush
+
 @section('extendedSection')
 	@foreach ($data as $businessData)
 		<div class="container" style="padding-top: 50px">

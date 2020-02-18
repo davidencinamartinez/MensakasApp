@@ -214,6 +214,12 @@ class DatabaseSeeder extends Seeder {
         		'item_price' => 5.50,
         		'item_status' => 1
         	],
+          [ 'bus_id' => 1,
+            'item_name' => 'Menú Grand Whiskey BBQ',
+            'item_description' => 'La famosa Grand Whiskey BBQ está de vuelta. La combinación de carne a la parrilla, salsa Whiskey BBQ y delicioso queso de cabra la hacen insuperable. Y además, con cebolla crujiente, bacon y tomate recién cortado entre pan de cerveza.',
+            'item_price' => 9.20,
+            'item_status' => 1
+          ],
         ]);
 
       DB::table('extras')->insert([
@@ -257,17 +263,26 @@ class DatabaseSeeder extends Seeder {
       ]);
 
    		DB::table('orders')->insert([
-   			[	'order_date' => Carbon::now()->format('Y-m-d H:i:s'),
+   			[	'order_date' => Carbon::createFromFormat('d/m/Y H:i:s',  '16/02/2020 20:32:45'),
    				'consumer_id' => 4,
    				'bus_id' => 1,
-          'order_total' => 15.50
+          'order_total' => 15.50,
+          'order_status' => 5,
+          'pickup_time' => Carbon::createFromFormat('d/m/Y H:i:s',  '16/02/2020 20:32:45')->addMinutes(15),
+          'delivery_time' => Carbon::createFromFormat('d/m/Y H:i:s',  '16/02/2020 20:32:45')->addMinutes(32),
+          'comments' => 'Preguntar por Gabriel Fernández',
    			],
-        [ 'order_date' => Carbon::now()->format('Y-m-d H:i:s'),
+        [ 'order_date' => Carbon::createFromFormat('d/m/Y H:i:s',  '18/02/2020 14:15:20'),
           'consumer_id' => 4,
           'bus_id' => 2,
-          'order_total' => 11.50
+          'order_total' => 11.50,
+          'order_status' => 5,
+          'pickup_time' => Carbon::createFromFormat('d/m/Y H:i:s',  '18/02/2020 14:15:20')->addMinutes(22),
+          'delivery_time' => Carbon::createFromFormat('d/m/Y H:i:s',  '18/02/2020 14:15:20')->addMinutes(38),
+          'comments' => null
         ],
    		]);
 
+      
     }
 }

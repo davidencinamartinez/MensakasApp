@@ -8,6 +8,26 @@
 </style>  
 @endpush
 
+@push('scripts')
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $(document).ready(function($) {
+      var idCount = 1;
+      var idTarget = 1;
+      $('tr td ul').each(function(index, el) {
+        $(this).attr('id', 'dropdown'+idCount);
+        idCount++;
+      });
+      $('a[data-target="dropdown2"]').each(function(index, el) {
+        $(this).attr('data-target', 'dropdown'+idTarget);
+        idTarget++;
+      });
+    });
+  </script>
+@endpush
+
 @section('extendedSection')
 <div class="container" style="padding-top: 50px; padding-bottom: 50px">
   <div class="row">
@@ -29,18 +49,10 @@
     <tbody>
       @foreach($data as $orderData)
       <tr>
-        <form id="delForm" action="/admin/orders/delete/{{ $orderData->id }}" 
-          method="POST" style="display:none;" 
-          onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
-          @csrf
-        </form>
         <td>
           <ul id="dropdown2" class="dropdown-content hover">
             <li>
-              <a href="/admin/orders/{{ $orderData->id }}">
-                Ver detalles
-                <i class="material-icons">remove_red_eye</i>
-              </a>
+              <a href="/admin/orders/{{ $orderData->id }}">Ver detalles</a>
             </li>
           </ul>
           <a class="btn dropdown-trigger" data-target="dropdown2"><i class="material-icons">settings</i></a>

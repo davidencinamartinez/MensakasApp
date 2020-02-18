@@ -1,14 +1,31 @@
 @extends('main')
 
 @section('title', 'Registro de usuario - MensakasApp')
-
+@push('scripts')
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('input').on('input', function(event) {
+				$('button[name="btn_login"]').removeClass('disabled');
+			});
+			$('select').change(function(event) {
+				$('button[name="btn_login"]').removeClass('disabled');
+			});
+      $('.modal').modal();
+		});
+	</script>
+@endpush
 @section('extendedSection')
 <div class="container" style="padding-top: 50px">
 	<div class="row">
 		<h4>Registro de usuario</h4>
 	</div>
 	<div class="row">
-	    <form class="col s12" action="/admin/new/user" method="POST" onsubmit="return confirm('Estás seguro de registrar a este usuario?');">
+	    <form class="col s12" id="create_user" action="/admin/new/user" method="POST">
 	    	@csrf
 	      <div class="row">
 	        <div class="input-field col s6">
@@ -43,8 +60,20 @@
 	         <label>Rol</label>
 	       </div>
 	   </div>
-	   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Registrar usuario</b></button>
+	   <button data-target="modal1" name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1 modal-trigger disabled'><b>Registrar usuario</b></button>
 	    </form>
 	  </div>
 	</div>
+
+	<div id="modal1" class="modal">
+	    <div class="modal-content">
+				<h4>Atención!</h4>
+	      <p>Estas seguro de añadir este restaurante?</p>
+	    </div>
+	    <div class="modal-footer">
+				<button onclick="return false" class="modal-close waves-effect waves-green btn-flat red accent-2" style="display:inline-flex"><i class="material-icons">cancel</i>&nbspCancelar</button>
+	      <button onclick="$('#create_user').submit();" class="modal-close waves-effect waves-green btn-flat light-green" style="display:inline-flex"><i class="material-icons">check</i>&nbspConfirmar</button>
+			</div>
+	</div>
+	
 @endsection

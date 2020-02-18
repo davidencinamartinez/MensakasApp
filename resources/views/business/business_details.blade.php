@@ -1,19 +1,37 @@
 @extends('main')
 
 @section('title', 'Detalles de negocio - MensakasApp')
+@push('scripts')
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('input').on('input', function(event) {
+				$('button[name="btn_login"]').removeClass('disabled');
+			});
+			$('select').change(function(event) {
+				$('button[name="btn_login"]').removeClass('disabled');
+			});
+      $('.modal').modal();
+		});
+	</script>
+@endpush
 
 @section('extendedSection')
 	@foreach ($data as $businessData)
 		<div class="container" style="padding-top: 50px">
 			<div class="row">
-				<form action="/admin/businesses/delete/{{ $businessData->id }}" method="POST" onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
+				<form id="delete_business" action="/admin/businesses/delete/{{ $businessData->id }}" method="POST">
 					@csrf
-					<button type="submit" class="btn-floating btn-large waves-effect waves-light purple darken-1 right"><i class="material-icons">delete_forever</i></button>
+					<button data-target="modal2" class="btn-floating btn-large waves-effect waves-light purple darken-1 modal-trigger right"><i class="material-icons">delete_forever</i></button>
 				</form>
 				<h4>Negocio Nº: {{ $businessData->id }}</h4>
 			</div>
 			<div class="row">
-			    <form class="col s12" action="/admin/businesses/update/{{ $businessData->id }}" method="POST" onsubmit="return confirm('Deseas guardar los cambios?');">
+			    <form class="col s12" id="updateForm" action="/admin/businesses/update/{{ $businessData->id }}" method="POST">
 			    	@csrf
 			      <div class="row">
 			        <div class="input-field col s6">
@@ -67,9 +85,30 @@
 			       	  <input id="timepicker_closing" name="closing_schedule" class="timepicker" type="time" value="{{ $businessData->closing_schedule }}">
 			       </div>
 			   </div>
-			   <button type='submit' name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1'><b>Guardar cambios</b></button>
+			   <button data-target="modal1" name='btn_login' class='col s12 btn btn-large waves-effect waves-light purple darken-1 modal-trigger disabled'><b>Guardar cambios</b></button>
 			    </form>
 			  </div>
 			</div>
 	@endforeach
+
+	<div id="modal1" class="modal">
+	    <div class="modal-content">
+				<h4>Atención!</h4>
+	      <p>Estas seguro de hacer cambios?</p>
+	    </div>
+	    <div class="modal-footer">
+				<button onclick="return false" class="modal-close waves-effect waves-green btn-flat red accent-2" style="display:inline-flex"><i class="material-icons">cancel</i>&nbspCancelar</button>
+	      <button onclick="$('#updateForm').submit();" class="modal-close waves-effect waves-green btn-flat light-green" style="display:inline-flex"><i class="material-icons">check</i>&nbspConfirmar</button>
+			</div>
+	</div>
+	<div id="modal2" class="modal">
+			<div class="modal-content">
+				<h4>Atención!</h4>
+				<p>Estás seguro que deseas eliminar este registro?</p>
+			</div>
+			<div class="modal-footer">
+				<button onclick="return false" class="modal-close waves-effect waves-green btn-flat red accent-2" style="display:inline-flex"><i class="material-icons">cancel</i>&nbspCancelar</button>
+				<button onclick="$('#delete_business').submit();" class="modal-close waves-effect waves-green btn-flat light-green" style="display:inline-flex"><i class="material-icons">check</i>&nbspConfirmar</button>
+			</div>
+	</div>
 @endsection

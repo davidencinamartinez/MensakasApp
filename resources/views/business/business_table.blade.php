@@ -10,8 +10,8 @@
 @endpush
 
 @push('scripts')
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  <script src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
   crossorigin="anonymous"></script>
   <script type="text/javascript">
     $(document).ready(function($) {
@@ -34,7 +34,9 @@
       $('.aSubmit').each(function(index, el) {
         $(this).attr('onclick', '$("#deleteForm'+aSubId+'").submit();');
         aSubId++;
-      });
+
+      $('.modal').modal();
+
     });
   </script>
 @endpush
@@ -61,9 +63,9 @@
     <tbody>
       @foreach($data as $businessData)
       <tr>
-        <form id="delForm" action="/admin/businesses/delete/{{ $businessData->id }}" 
-          method="POST" style="display:none;" 
-          onsubmit="return confirm('Estás seguro que deseas eliminar este registro?');">
+        <form id="delForm" action="/admin/businesses/delete/{{ $businessData->id }}"
+          method="POST" style="display:none;"
+          >
           @csrf
         </form>
         <td>
@@ -75,14 +77,14 @@
               </a>
             </li>
             <li>
-              <a class="aSubmit">
+              <a class="aSubmit modal-trigger" href="#modal1">
                 Eliminar registro
                 <i class="material-icons">delete_sweep</i>
               </a>
             </li>
             </ul>
           <a class="btn dropdown-trigger" data-target="dropdown2"><i class="material-icons">settings</i></a>
-        </td> 
+        </td>
         <td>{{ $businessData->bus_name }}</td>
         <td>{{ $businessData->bus_category }}</td>
         <td>{{ $businessData->name }}</td>
@@ -93,4 +95,16 @@
     </tbody>
   </table>
 </div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+			<h4>Atención!</h4>
+      <p>Estás seguro que deseas eliminar este registro?</p>
+    </div>
+    <div class="modal-footer">
+			<button onclick="return false" class="modal-close waves-effect waves-green btn-flat red accent-2" style="display:inline-flex"><i class="material-icons">cancel</i>&nbspCancelar</button>
+      <button onclick="$('#delForm').submit();" class="modal-close waves-effect waves-green btn-flat light-green" style="display:inline-flex"><i class="material-icons">check</i>&nbspConfirmar</button>
+    </div>
+</div>
+
 @endsection

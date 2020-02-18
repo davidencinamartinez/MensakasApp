@@ -65,8 +65,8 @@ class ApplicationTables extends Migration {
             $table->integer('bus_id');
             $table->decimal('order_total', 6, 2);
             $table->boolean('order_status')->default(2); // confirmed (1) / not confirmed (2) / processing (3) / ready (4) / delivered (5)
-            $table->timestamp('confirmation_time')->nullable();
-            $table->timestamp('estimated_time')->nullable(); // estimation (minutes) for business to process order
+            $table->timestamp('pickup_time')->nullable();
+            $table->timestamp('delivery_time')->nullable();
             $table->string('comments')->nullable();
         });
 
@@ -89,8 +89,7 @@ class ApplicationTables extends Migration {
             $table->increments('id');
             $table->integer('order_id'); // references id on orders
             $table->string('deliverer_id'); // references id on users
-            $table->string('deliverer_received')->default(2); // received (1) / not received (2)
-            $table->boolean('delivery_delivered')->default(2); // delivered (1) / not delivered (2)
+            $table->timestamp('delivery_time')->nullable();
         });       
 
     }

@@ -9,7 +9,7 @@
 @endpush
 
 @section('extendedSection')
-<div class="container" style="padding-top: 50px">
+<div class="container" style="padding-top: 50px; padding-bottom: 50px">
   <div class="row">
     <h4>Pedidos</h4>
   </div>
@@ -20,6 +20,7 @@
       <tr>
           <th>Opciones</th>
           <th>Referencia</th>
+          <th>Negocio</th>
           <th>Fecha</th>
           <th>Total (€)</th>
           <th>Estado</th>
@@ -45,12 +46,19 @@
           <a class="btn dropdown-trigger" data-target="dropdown2"><i class="material-icons">settings</i></a>
         </td> 
         <td>{{ $orderData->id }}</td>
+        <td>{{ $orderData->bus_name }}</td>
         <td>{{ date('d/m/Y - H:i', strtotime($orderData->order_date)) }}</td>
         <td>{{ $orderData->order_total }}</td>
         @if ($orderData->order_status == 1)
           <td>Confirmada</td>
-        @else
+        @elseif ($orderData->order_status == 2)
           <td>Pendiente</td>
+        @elseif ($orderData->order_status == 3)
+          <td>En proceso</td>
+        @elseif ($orderData->order_status == 4)
+          <td>Listo para recogida</td>
+        @else
+          <td>Entregado</td>
         @endif
       </tr>
       @endforeach

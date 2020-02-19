@@ -19,6 +19,10 @@
 
 	Route::get('business/{id}', 'ConsumerApp\IndexController@getBusinessDetails');
 
+	// SHOPPING CART
+
+		Route::post('checkout', 'ConsumerApp\IndexController@postOrder');
+
 // AUTHENTICATION ROUTES
 
 	Route::get('/login', function () {

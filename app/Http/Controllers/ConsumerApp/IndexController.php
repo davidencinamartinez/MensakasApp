@@ -31,9 +31,25 @@ class IndexController extends Controller {
   	->where('items.bus_id', '=', $id)
   	->select('items.*')
   	->get();
+    $extras = DB::table('extras')
+    ->where('extras.bus_id', '=', $id)
+    ->select('extras.*')
+    ->get();
   	return view('consumerApp.business_details', 
   		[	'items' => $items,
-  			'business' => $business
+  			'business' => $business,
+        'extras' => $extras
   	]);
+  }
+
+  public function postOrder(Request $request) {
+    $lastOrder = DB::table('orders')->latest('id')->value('id')+1;
+    $items = $request->item;
+    foreach ($items as $id) {
+      DB::table('order_items')->insert(
+        [ 'order_id' => intval($lastOrder),
+          'item_id' => intval($id)
+        ]);
+    }
   }
 }

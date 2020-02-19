@@ -53,7 +53,7 @@ class ApplicationTables extends Migration {
         Schema::create('extras', function (Blueprint $table) {
             $table->engine = 'innodb';
             $table->increments('id');
-            $table->integer('item_id');
+            $table->integer('bus_id');
             $table->string('extra_name');
             $table->decimal('extra_price', 5, 2);
         });

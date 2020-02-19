@@ -15,7 +15,9 @@
 
 	Route::get('/', 'ConsumerApp\IndexController@getLocations')->name('index');
 
-	Route::get('businesses/{id}', 'ConsumerApp\IndexController@getBusinesses');
+	Route::get('locations/{id}', 'ConsumerApp\IndexController@getBusinesses');
+
+	Route::get('business/{id}', 'ConsumerApp\IndexController@getBusinessDetails');
 
 // AUTHENTICATION ROUTES
 

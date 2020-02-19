@@ -27,7 +27,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('select').change(function(index, el) {
-			$('button a').attr('href', '/businesses/'+$(this).children("option:selected").val());
+			$('button a').attr('href', '/locations/'+$(this).children("option:selected").val());
 		});
 	});
 </script>

@@ -11,90 +11,100 @@
 |
 */
 
+// CONSUMER APP
+
+	Route::get('/', 'ConsumerApp\IndexController@getLocations')->name('index');
+
+	Route::get('businesses/{id}', 'ConsumerApp\IndexController@getBusinesses');
+
 // AUTHENTICATION ROUTES
 
-Auth::routes();
+	Route::get('/login', function () {
+		return view('login');
+	});
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+	Route::post('/login', 'LoginController@loginUser');
 
-// USERS ROUTES
+	Route::post('/logout', 'LoginController@logoutUser');
 
-	// USERS LIST
+// ADMIN PANEL
 
-		Route::get('admin/users', 'UsersController@getAllUsers')->name('users');
+	// USERS ROUTES
 
-	// USER DETAILS
+		// USERS LIST
 
-		Route::get('admin/users/{id}', 'UsersController@getUser');
+			Route::get('admin/users', 'AdminPanel\UsersController@getAllUsers')->name('users');
 
-	// USER DATA UPDATE
+		// USER DETAILS
 
-		Route::post('admin/users/update/{id}', 'UsersController@updateUser');
+			Route::get('admin/users/{id}', 'AdminPanel\UsersController@getUser');
 
-	// USER DELETE
+		// USER DATA UPDATE
 
-		Route::post('admin/users/delete/{id}', 'UsersController@deleteUser');
+			Route::post('admin/users/update/{id}', 'AdminPanel\UsersController@updateUser');
 
-	// USER CREATION
+		// USER DELETE
 
-		// USER CREATION VIEW
+			Route::post('admin/users/delete/{id}', 'AdminPanel\UsersController@deleteUser');
 
-			Route::get('admin/new/user', function () {
-				return view('users.user_create');
-			});
+		// USER CREATION
 
-		// USER CREATION DB
+			// USER CREATION VIEW
 
-			Route::post('admin/new/user', 'UsersController@createUser');
+				Route::get('admin/new/user', function () {
+					return view('adminPanel.users.user_create');
+				});
 
-// BUSINESSES ROUTES
+			// USER CREATION DB
 
-	// BUSINESSES LIST
+				Route::post('admin/new/user', 'AdminPanel\UsersController@createUser');
 
-		Route::get('admin/businesses', 'BusinessController@getAllBusinesses')->name('businesses');
+	// BUSINESSES ROUTES
 
-	// BUSINESS DETAILS
+		// BUSINESSES LIST
 
-		Route::get('admin/businesses/{id}', 'BusinessController@getBusiness');
+			Route::get('admin/businesses', 'AdminPanel\BusinessController@getAllBusinesses')->name('businesses');
 
-	// BUSINESS UPDATE 
+		// BUSINESS DETAILS
 
-		Route::post('admin/businesses/update/{id}', 'BusinessController@updateBusiness');
+			Route::get('admin/businesses/{id}', 'AdminPanel\BusinessController@getBusiness');
 
-	// BUSINESS DELETE
+		// BUSINESS UPDATE 
 
-		Route::post('admin/businesses/delete/{id}', 'BusinessController@deleteBusiness');
+			Route::post('admin/businesses/update/{id}', 'AdminPanel\BusinessController@updateBusiness');
 
-	// BUSINESS CREATION
+		// BUSINESS DELETE
 
-		// BUSINESS CREATION VIEW
+			Route::post('admin/businesses/delete/{id}', 'AdminPanel\BusinessController@deleteBusiness');
 
-			Route::get('admin/new/business', function () {
-				$cat = DB::table('categories')->get();
-				$locations = DB::table('locations')->get();
-				return view('business.business_create', [	'categories' => $cat,
-															'locations' => $locations
-				]);
-			});
+		// BUSINESS CREATION
 
-		// BUSINESS CREATION DB
+			// BUSINESS CREATION VIEW
 
-			Route::post('admin/new/business', 'BusinessController@createBusiness');
+				Route::get('admin/new/business', function () {
+					$cat = DB::table('categories')->get();
+					$locations = DB::table('locations')->get();
+					return view('adminPanel.business.business_create', [	'categories' => $cat,
+																'locations' => $locations
+					]);
+				});
 
-// ORDERS ROUTES
+			// BUSINESS CREATION DB
 
-	// ORDERS LIST
+				Route::post('admin/new/business', 'AdminPanel\BusinessController@createBusiness');
 
-		Route::get('admin/orders', 'OrdersController@getAllOrders')->name('orders');
+	// ORDERS ROUTES
 
-	// ORDER DETAILS
+		// ORDERS LIST
 
-		Route::get('admin/orders/{id}', 'OrdersController@getOrder');
+			Route::get('admin/orders', 'AdminPanel\OrdersController@getAllOrders')->name('orders');
 
-// ITEMS ROUTES
+		// ORDER DETAILS
 
-	// ITEMS LIST
+			Route::get('admin/orders/{id}', 'AdminPanel\OrdersController@getOrder');
 
-		Route::get('admin/items', 'ItemsController@getAllItems');
+	// ITEMS ROUTES
+
+		// ITEMS LIST
+
+			Route::get('admin/items', 'AdminPanel\ItemsController@getAllItems');

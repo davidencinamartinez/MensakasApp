@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('role');
+            $table->boolean('status')->default(1); // enabled (1) / disabled (2)
             $table->string('location')->nullable(); // gets location in case of deliverer 
         });
     }

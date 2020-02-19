@@ -81,3 +81,9 @@ input[type=number] {	-moz-appearance:textfield;
 
 .timepicker-close {	color: black !important;
 }
+
+.card-content > button {	background-color: #4a148c;
+}
+
+.card-content > button:hover {	background-color: #58148c;
+}

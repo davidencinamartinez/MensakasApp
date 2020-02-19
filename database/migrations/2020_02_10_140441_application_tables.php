@@ -37,6 +37,7 @@ class ApplicationTables extends Migration {
             $table->string('address')->nullable();
             $table->time('opening_schedule')->nullable();
             $table->time('closing_schedule')->nullable();
+            $table->boolean('bus_status')->default(1); // enabled (1) / disabled (2)
         });
 
         Schema::create('items', function (Blueprint $table) {

@@ -29,6 +29,13 @@
 
 // AUTHENTICATION ROUTES
 
+
+	Route::get('/register', function () {
+		return view('register');
+	});
+
+	Route::post('/register', 'LoginController@registerUser');
+
 	Route::get('/login', function () {
 		return view('login');
 	});

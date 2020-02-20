@@ -27,6 +27,7 @@
       $(this).prev('input').val(parseInt($(this).prev('input').val())+1);
       $('<input>').attr({ type: 'hidden', name: 'item[]', value: $(this).next().html()}).appendTo('form');
       $('<h6>').text('- Producto: '+itemToAdd).appendTo('.modal-content');
+      M.toast({html: 'Producto añadido al carrito&nbsp<i class="material-icons">shopping_cart</i>', classes: 'rounded'});
     });
 
     // SUBTRACT ITEM BUTTON
@@ -46,6 +47,7 @@
       $(this).prev('input').val(parseInt($(this).prev('input').val())+1);
       $('<input>').attr({ type: 'hidden', name: 'extra[]', value: $(this).next().html()}).appendTo('form');
       $('<h6>').text('- Extra: '+extraToAdd).appendTo('.modal-content');
+      M.toast({html: 'Extra añadido al carrito&nbsp<i class="material-icons">shopping_cart</i>', classes: 'rounded'});
     });
 
     // SUBTRACT EXTRA BUTTON
@@ -60,18 +62,33 @@
 
   });
 </script>
+<script type="text/javascript">
+  function getTotal() {
+      var total = 0.0;
+      $('.productQuantity').each(function(index, el) {
+        total += parseFloat($(this).parent().parent().find('p:contains("Precio") em').first().html())*($(this).val());  
+      });
+      $('input[name="order_total"]').val(total);
+    }
+
+  function getComments() {
+    $('input[name="comments"]').val($('#comments_box').val());
+  }
+</script>
 @endpush
 
 @section('extendedSection')
 <div id="modal1" class="modal">
     <div class="modal-content">
       <h4 id="productCounter">Tu cesta</h4>
-      <form id="shoppingCart" action="/checkout" method="POST" style="display:none;">
+      <form id="shoppingCart" action="/checkout/{{ $bus_title }}" method="POST" style="display:none;">
         @csrf
+        <input type="hidden" name="order_total" value="">
+        <input type="hidden" name="comments" value="">
       </form>
     </div>
     <div class="modal-footer">
-      <a onclick="$('#shoppingCart').submit();" class="modal-close waves-effect waves-green btn-flat">Pagar</a>
+      <a onclick="getTotal(); getComments(); $('#shoppingCart').submit();" class="modal-close waves-effect waves-green btn-flat">Pagar</a>
     </div>
   </div>
 	<div class="container" style="padding-top: 50px">
@@ -97,7 +114,7 @@
                   <div class="collapsible-body">
                   	<h6>{{ $orderItem->item_name }}</h6>
                   	<p>{{ $orderItem->item_description }}</p>
-                  	<p><b>Precio:</b>&nbsp{{ $orderItem->item_price }}€</p>
+                  	<p><b>Precio:</b>&nbsp<em>{{ $orderItem->item_price }}</em> €</p>
                     <div class="row">
                       <i class="material-icons subButtonItem" style="vertical-align: bottom; cursor: pointer">indeterminate_check_box</i>
                       <input type="" class="productQuantity" name="" style="width: 35px; text-align: center;" value="0" disabled>
@@ -119,7 +136,7 @@
                 @foreach ($extras as $orderExtra)
                   <div class="collapsible-body">
                     <h6>{{ $orderExtra->extra_name }}</h6>
-                    <p><b>Precio:</b>&nbsp{{ $orderExtra->extra_price }}€</p>
+                    <p><b>Precio:</b>&nbsp<em>{{ $orderExtra->extra_price }}</em>€</p>
                     <div class="row">
                       <i class="material-icons subButtonExtra" style="vertical-align: bottom; cursor: pointer">indeterminate_check_box</i>
                       <input type="" class="productQuantity" name="" style="width: 35px; text-align: center;" value="0" disabled>
@@ -132,5 +149,11 @@
             </ul>
           </div>
        @endforeach
+       <div class="row">
+              <div class="input-field col s12">
+               <textarea id="comments_box" class="materialize-textarea" data-length="250"></textarea>
+                <label for="comments_box">Escribe un comentario</label>
+              </div>
+            </div>
       </div>
 @endsection

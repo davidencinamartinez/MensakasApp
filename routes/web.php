@@ -15,13 +15,17 @@
 
 	Route::get('/', 'ConsumerApp\IndexController@getLocations')->name('index');
 
+	Route::post('/', 'ConsumerApp\IndexController@register')->name('index');
+
 	Route::get('locations/{id}', 'ConsumerApp\IndexController@getBusinesses');
 
 	Route::get('business/{id}', 'ConsumerApp\IndexController@getBusinessDetails');
 
 	// SHOPPING CART
 
-		Route::post('checkout', 'ConsumerApp\IndexController@postOrder');
+		Route::post('checkout/{id}', 'ConsumerApp\IndexController@postOrder');
+
+		Route::post('/payment', 'ConsumerApp\IndexController@orderPayment');
 
 // AUTHENTICATION ROUTES
 

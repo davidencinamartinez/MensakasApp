@@ -37,23 +37,46 @@
 <div class="section"></div>
 <div class="section"></div>
 <div class="row">
-    <div class="col s12 m6">
-    	<h5 style="color: white;"><b>Platos deliciosos del restaurante a tu casa</b></h5>
-      	<div class="card" style="background-color: rgba(255,255,255,0.4); border-radius: 10px;">
-        	<div class="card-content white-text">
-          		<p>Selecciona tu población para encontrar restaurantes cerca:</p>
-		        	<select name="location_id" class="col s6">
-			         	@foreach ($locations as $loc)
-		  	           		<option value="{{ $loc->id }}">{{ $loc->name }}</option>
-	  	           		@endforeach
-		         	</select>
-	          	<button class="btn waves-effect waves-light" name="action">
-	          		<a href="">Buscar
-	          			<i class="material-icons right">forward</i>
-	          		</a>
-	            </button>
-	        </div>
-      	</div>
-    </div>
+	<div class="col s6 m6">
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title"><h3>Sign up to find out more about Two Lanterns.</h3></span>
+				<form class="container">
+					<div class = "row">
+						<div class="input-field col m6">
+							<input id="first_name" name="first_name" type="text" class="validate">
+							<label for="first_name">Nombre</label>
+						</div>
+						<div class="input-field col m6">
+							<input id="last_name" name="last_name" type="text" class="validate">
+							<label for="last_name">Apellido</label>
+						</div>
+					</div>
+					<div class = "row">
+						<div class="input-field col m6">
+							<input id="email" type="email" class="validate">
+							<label for="email">Email</label>
+						</div>
+						<div class="input-field col m6">
+							<input id="address" type="text" name="address" class="validate">
+							<label for="address">Dirección</label>
+						</div>
+					</div>
+					<div class = "row">
+						<select id="location" name="location_id" class="col s2">
+							<option selected disabled>Población</option>
+							@foreach ($locations as $loc)
+								<option value="{{ $loc->id }}">{{ $loc->name }}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="row">
+						<button class="btn waves-effect waves-light purple darken-4" type="submit">Buscar<i class="material-icons right">forward</i>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection

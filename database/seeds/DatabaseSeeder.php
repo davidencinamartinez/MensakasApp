@@ -241,7 +241,7 @@ class DatabaseSeeder extends Seeder {
           'extra_price' => 1.20,
         ],
         [ 'bus_id' => 1,
-          'extra_name' => 'Menú Grande',
+          'extra_name' => 'King aros de cebolla',
           'extra_price' => 1.00,
         ],
         [ 'bus_id' => 3,

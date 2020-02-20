@@ -35,7 +35,7 @@ class OrdersController extends Controller {
         $business = DB::table('orders')
           ->join('businesses', 'businesses.id', '=', 'orders.bus_id')
           ->select('businesses.bus_name')
-          ->where('orders.bus_id', '=', $id)
+          ->where('orders.id', '=', $id)
           ->first();
         $order_items = DB::table('order_items')
           ->join('items','items.id','=','order_items.item_id')

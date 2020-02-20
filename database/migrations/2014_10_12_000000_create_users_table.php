@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->boolean('role');
             $table->boolean('status')->default(1); // enabled (1) / disabled (2)
+            $table->boolean('bus_id')->nullable(); // id if business manager 
             $table->string('location')->nullable(); // gets location in case of deliverer 
         });
     }

@@ -35,6 +35,12 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
+           <input id="address" name="address" type="text" class="validate" autocomplete="off">
+           <label for="address">Dirección</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
           <input id="password" name="password" type="password" class="validate" autocomplete="off">
           <label for="password">Contraseña</label>
         </div>

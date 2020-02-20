@@ -94,11 +94,13 @@ class IndexController extends Controller {
 
   public function orderPayment(Request $request) {
     DB::table('orders')
-    ->where('orders.id', '=', $request->order_id)
-    ->update([
-      'orders.status' => 1
-      ]);
+    ->where('orders.id', '=', $request->input('order_id'))
+    ->update(['order_status' => 1]);
 
-    return redirect()->route('index');
+    $status = DB::table('orders')
+    ->where('orders.id', '=', $request->input('order_id'))
+    ->value('orders.order_status');
+
+    return view('consumerApp.order_status')->with('status', $status);
   }
 }

@@ -27,6 +27,10 @@
 
 		Route::post('/payment', 'ConsumerApp\IndexController@orderPayment');
 
+// BUSINESS APP
+
+		Route::get('/myBusiness', 'BusinessPanel\BusinessController@getOrders');
+
 // AUTHENTICATION ROUTES
 
 

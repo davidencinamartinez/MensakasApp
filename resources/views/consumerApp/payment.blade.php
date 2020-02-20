@@ -120,6 +120,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                             	<form method="POST" action="/payment">
+                                    @csrf
                             		<input type="hidden" name="order_id" value="{{$order_id}}">
                                 	<button class="btn btn-success btn-lg btn-block" type="submit">Realizar Pago</button>
                                 </form>

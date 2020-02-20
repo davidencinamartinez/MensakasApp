@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder {
   				'password' => Hash::make('P@ssw0rd'),
   				'role' => 4,
   				'location' => null,
-          'status' => 1
+          'status' => 1,
+          'bus_id' => null
   			],
   			[	'first_name' => 'Paco',
   				'last_name' => 'Cayuela',
@@ -27,7 +28,8 @@ class DatabaseSeeder extends Seeder {
   				'password' => Hash::make('P@ssw0rd'),	
   				'role' => 4,
   				'location' => null,
-          'status' => 1
+          'status' => 1,
+          'bus_id' => null
   			],
   			[
   				'first_name' => 'Miquel',
@@ -36,7 +38,8 @@ class DatabaseSeeder extends Seeder {
   				'password' => Hash::make('P@ssw0rd'),
   				'role' => 3,
   				'location' => null,
-          'status' => 2
+          'status' => 1,
+          'bus_id' => 1
   			],
   			[
   				'first_name' => 'Esther',
@@ -45,7 +48,8 @@ class DatabaseSeeder extends Seeder {
   				'password' => Hash::make('P@ssw0rd'),
   				'role' => 1,
   				'location' => null,
-          'status' => 1
+          'status' => 1,
+          'bus_id' => null
   			],
   			[
   				'first_name' => 'Pepe',
@@ -54,7 +58,8 @@ class DatabaseSeeder extends Seeder {
   				'password' => Hash::make('P@ssw0rd'),
   				'role' => 2,
   				'location' => '41.374281, 2.085636',
-          'status' => 1
+          'status' => 1,
+          'bus_id' => null
   			],
   		]);
 
